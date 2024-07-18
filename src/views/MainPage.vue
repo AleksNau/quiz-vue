@@ -1,6 +1,5 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
-import arrow from '../assets/opentext.svg'
+
 </script>
 
 <template>
