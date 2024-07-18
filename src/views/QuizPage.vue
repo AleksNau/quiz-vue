@@ -1,8 +1,8 @@
 <template>
   <div class="quiz">
-    <progress class="quiz__progressbar" value="70" max="100">70 %</progress>
+    <PBar :count="lengthItem" />
     <Survey :quizdata="quizdata[count]"/>
-    <button class="quiz__button">далее</button>
+    <button type="button" class="quiz__button" @click="makeProgress">далее</button>
   </div>
 </template>
 
@@ -30,21 +30,27 @@
   margin: 0 auto;
 }
 
-.quiz__progressbar {
-  min-width: 200px;
-  margin: 0 auto;
-}
-
 </style>
 
 <script setup>
-import Survey from "../components/answer/Survey.vue";
-import {ref,computed} from "vue";
+import Survey from "../components/Survey/Survey.vue";
+import PBar from "../components/ProgressBar/ProgressBar.vue";
+import {ref} from "vue";
+let count = ref(0)
 
-let count = 0;
 const quizdata = ref([
   { id: 1, answers: ['Мужчина','Женщина'], question: "ваш пол:"},
   { id: 2, answers: ['До 18','От 18 до 28','от 29 до 35','От 36'], question: "укажите ваш возраст:" },
   { id: 3, answers: ['Дом','Шалаш','Бунгало','Скамейка','Хижина'], question: "Выберите лишнее:"},
 ]);
+
+let oneItem = 100/quizdata.value.length;
+let lengthItem = ref(0) ;
+const makeProgress = () => {
+  if(count.value < quizdata.value.length) {
+    count.value ++;
+    lengthItem.value += oneItem;
+  }
+  return null;
+}
 </script>

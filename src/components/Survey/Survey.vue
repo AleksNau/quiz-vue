@@ -1,8 +1,8 @@
 <script setup>
 const props = defineProps({
   quizdata:{
-    type:Array,
-  }
+    type:Object,
+  },
 })
 </script>
 
