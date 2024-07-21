@@ -1,24 +1,53 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
 
+import {  RouterView } from 'vue-router'
+import Burger from './components/Burger/Burger.vue'
 </script>
 
 <template>
+  <div class="container">
   <header>
     <div class="wrapper">
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/quiz">About</RouterLink>
-      </nav>
+      <Burger/>
+      <div class="brain-container" v-if="this.$route.name === 'quiz'">
+        <img  src="./assets/rain_bk3.png" width="48" height="47" alt="мозг"/>
+        <p v-if="this.$route.name === 'quiz'" class="brain__title">тест на определение IQ</p>
+      </div>
+      <div class="brain-container" v-if="this.$route.name === 'result'" >
+        <img  src="./assets/rain_bk3.png" width="48" height="47" alt="мозг"/>
+        <p v-if="this.$route.name === 'result'" class="brain__title brain__title-result">Готово!</p>
+      </div>
     </div>
   </header>
 
   <RouterView />
+  </div>
 </template>
 
 <script setup>
 
 </script>
 <style scoped>
+.brain-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
 
+.brain__title {
+  font-family: Yeseva One;
+  font-size: 12px;
+  line-height: 13.86px;
+  letter-spacing: 0.05em;
+  text-align: left;
+  text-transform: uppercase;
+  color: #FFC700;
+}
+
+.brain__title-result {
+  font-size: 20px;
+  line-height: 23.1px;
+  letter-spacing: 0.1em;
+}
 </style>

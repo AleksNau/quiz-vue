@@ -8,8 +8,8 @@
       <p class="subtitle">Пройдите точный и быстрый
       </p>
       <h1 class="title">тест на определение IQ</h1>
-
-      <button class="lead__button">Пройти тест</button>
+      <a href="/quiz" class="lead__button">
+      <button class="lead__button">Пройти тест</button></a>
       <p class="lead__desc"><span class="lead__desc-yellow">И получите рекомендации 
         по развитию своего интеллекта</span> <br/>
         и улучшению финансового благосостояния и личной жизни</p>

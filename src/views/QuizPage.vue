@@ -42,7 +42,6 @@
   background: rgba(255, 255, 255, 1);
   color: rgba(142, 142, 142, 1);
   text-align: center;
-  position: absolute;
   bottom: 23px;
 
   margin-left: auto;
