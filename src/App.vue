@@ -1,26 +1,25 @@
 <script setup>
 
-import {  RouterView } from 'vue-router'
-import Burger from './components/Burger/Burger.vue'
-</script>
+import {RouterView} from 'vue-router'
+import Burger from './components/Burger/Burger.vue'</script>
 
 <template>
   <div class="container">
-  <header>
-    <div class="wrapper">
-      <Burger/>
-      <div class="brain-container" v-if="this.$route.name === 'quiz'">
-        <img  src="./assets/rain_bk3.png" width="48" height="47" alt="мозг"/>
-        <p v-if="this.$route.name === 'quiz'" class="brain__title">тест на определение IQ</p>
+    <header>
+      <div class="wrapper">
+        <Burger/>
+        <div v-if="this.$route.name === 'quiz'" class="brain-container">
+          <img alt="мозг" height="47" src="./assets/rain_bk3.png" width="48"/>
+          <p v-if="this.$route.name === 'quiz'" class="brain__title">тест на определение IQ</p>
+        </div>
+        <div v-if="this.$route.name === 'result'" class="brain-container">
+          <img alt="мозг" height="47" src="./assets/rain_bk3.png" width="48"/>
+          <p v-if="this.$route.name === 'result'" class="brain__title brain__title-result">Готово!</p>
+        </div>
       </div>
-      <div class="brain-container" v-if="this.$route.name === 'result'" >
-        <img  src="./assets/rain_bk3.png" width="48" height="47" alt="мозг"/>
-        <p v-if="this.$route.name === 'result'" class="brain__title brain__title-result">Готово!</p>
-      </div>
-    </div>
-  </header>
+    </header>
 
-  <RouterView />
+    <RouterView/>
   </div>
 </template>
 

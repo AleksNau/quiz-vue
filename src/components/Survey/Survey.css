@@ -18,6 +18,7 @@
 .survey__question-image {
     max-width: 289px;
 }
+
 .survey__list {
     list-style-type: none;
     margin: 0;
@@ -28,8 +29,9 @@
     display: flex;
     flex-wrap: wrap;
     gap: 23px 21px;
-    padding: 20px 26px 34px 27px ;
+    padding: 20px 26px 34px 27px;
 }
+
 .survey__answer-words {
     color: #FFF;
     display: flex;
@@ -79,7 +81,7 @@
     width: 20px;
     height: 20px;
     border: 1px solid #FFF;
-    background-color:  rgba(28,28,28,0);
+    background-color: rgba(28, 28, 28, 0);
 }
 
 .answer__text {
@@ -137,7 +139,7 @@
     content: "";
     height: 20px;
     width: 20px;
-    border: 1px solid rgba(255,255,255,1);
+    border: 1px solid rgba(255, 255, 255, 1);
     border-radius: 50%;
 }
 
@@ -153,6 +155,7 @@
     border: 1px solid rgba(39, 39, 39, 1);
     background-color: rgba(41, 80, 194, 1);
 }
+
 /*Квадраты*/
 
 .survey__radio-colors {
