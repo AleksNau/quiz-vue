@@ -1,4 +1,5 @@
 <script setup>
+import Loader from "../../components/Loading/Loading.vue";
 
 const {quizdata} = defineProps({
   quizdata:{
@@ -6,17 +7,18 @@ const {quizdata} = defineProps({
   },
   typename:{
     type:String,
+  },
+  isLoading:{
+    type:Boolean,
   }
 })
 
-const x = (x) => {
-  console.log(x)
-}
+
 </script>
 
 
 <template>
-    <div class="survey">
+    <div class="survey" v-if="isLoading === true">
       <div v-if=" typename === 'words'">
         <p class="survey__question">{{ quizdata.question }}</p>
         <ul class="survey__list survey__list-words" v-if=" typename === 'words'">
@@ -61,6 +63,7 @@ const x = (x) => {
         </ul>
       </div>
     </div>
+  <Loader v-else/>
   </template>
 
   <style>

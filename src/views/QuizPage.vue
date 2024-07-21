@@ -2,9 +2,9 @@
   <div class="quiz">
     <PBar :count="lengthItem" />
     <div class="container">
-
-      <Survey :quizdata="quizdata[count]" :typename="quizdata[count].type"/>
-      <button type="button" class="quiz__button" @click="makeProgress">далее</button>
+      <Survey :quizdata="quizdata[count]" :typename="quizdata[count].type" :isLoading="loading"/>
+      <button v-if="!maxLength" type="button" class="quiz__button" @click="makeProgress">далее</button>
+      <button v-else type="button" class="quiz__button"  @click="getResult">другой</button>
     </div>
   </div>
 
@@ -54,10 +54,13 @@
 </style>
 
 <script setup>
+import {ref} from "vue";
+import Router from "@/router/index.js";
 import Survey from "../components/Survey/Survey.vue";
 import PBar from "../components/ProgressBar/ProgressBar.vue";
-import {ref} from "vue";
-let count = ref(0)
+
+let count = ref(0);
+let loading = ref(true);
 
 const quizdata = ref([
   { id: 1, answers: ['Мужчина','Женщина'], question: "ваш пол:",type:"words"},
@@ -75,11 +78,24 @@ const quizdata = ref([
 
 let oneItem = 100/quizdata.value.length;
 let lengthItem = ref(oneItem) ;
+let maxLength = false
+
 const makeProgress = () => {
   if(count.value < quizdata.value.length-1) {
     count.value ++;
     lengthItem.value += oneItem;
+    if (count.value === quizdata.value.length-1) {
+      maxLength = !maxLength
+    }
   }
-  return null;
+  return;
+}
+
+const getResult = () => {
+  loading.value = false
+  setTimeout(() => {
+    Router.push('result')
+    loading.value = true
+  },3000)
 }
 </script>
