@@ -1,20 +1,24 @@
 <script setup>
 
-import {RouterView} from 'vue-router'
-import Burger from './components/Burger/Burger.vue'</script>
+import {RouterView,useRouter} from 'vue-router'
+import Burger from './components/Burger/Burger.vue'
+
+const router = useRouter()
+
+</script>
 
 <template>
   <div class="container">
     <header>
       <div class="wrapper">
         <Burger/>
-        <div v-if="this.$route.name === 'quiz'" class="brain-container">
+        <div v-if="router.currentRoute.value.path === '/quiz'" class="brain-container">
           <img alt="мозг" height="47" src="./assets/rain_bk3.png" width="48"/>
-          <p v-if="this.$route.name === 'quiz'" class="brain__title">тест на определение IQ</p>
+          <p  class="brain__title">тест на определение IQ</p>
         </div>
-        <div v-if="this.$route.name === 'result'" class="brain-container">
+        <div v-if="router.currentRoute.value.path === '/result'" class="brain-container">
           <img alt="мозг" height="47" src="./assets/rain_bk3.png" width="48"/>
-          <p v-if="this.$route.name === 'result'" class="brain__title brain__title-result">Готово!</p>
+          <p class="brain__title brain__title-result">Готово!</p>
         </div>
       </div>
     </header>
